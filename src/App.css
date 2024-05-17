@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+@media (max-width: 1300px) {
+  .responsive {
+    grid-template-columns: repeat(2, 1fr); /* Reduce to 2 columns */
+  }
+ 
+}
+@media (max-width: 800px) {
+  .responsive {
+    grid-template-columns: repeat(1, 1fr); /* Reduce to 2 columns */
+  }
+ 
+}
+
+@media (max-width: 600px) {
+  .responsive {
+    grid-template-columns: 1fr; /* Reduce to 1 column */
+  }
+  
+
+}
