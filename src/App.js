@@ -4,19 +4,20 @@ import Login from "./pages/Login";
 import Properties from "./pages/Properties";
 
 function App() {
-
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        
         
         <Route
               path="/properties"
-              element={ <Properties />}
+              element={user && user.user ? <Properties /> : <Navigate to='/'/>}
             />
-        <Route path="*" element={<Navigate to="/" />} />
+            <Route exact path="/" element={<Login />} />
+            <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
