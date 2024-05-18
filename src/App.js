@@ -2,24 +2,37 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import './App.css';
 import Login from "./pages/Login";
 import Properties from "./pages/Properties";
+import { useEffect, useLayoutEffect, useState } from "react";
 
-function App() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+function App () {
+ 
+  const user =  JSON.parse(localStorage.getItem("user"));
+
+
 
   return (
+    
     <BrowserRouter>
-      <Routes>
-        
-        
-        <Route
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="*" element={<DefaultContainer />} />
+    </Routes>
+  </BrowserRouter>
+  );
+}
+
+
+function DefaultContainer() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return (
+      
+          <Routes>
+            <Route
               path="/properties"
-              element={user && user.user ? <Properties /> : <Navigate to='/'/>}
+              element={user && user.user ? <Properties /> : <Navigate to="/" />}
             />
-            <Route exact path="/" element={<Login />} />
             <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
+          </Routes>
   );
 }
 

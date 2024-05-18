@@ -70,9 +70,9 @@ const Login = () => {
       if (savedUser.status === 200) {
         localStorage.setItem("user", JSON.stringify(savedUser));
 
-        setTimeout(() => {
+        
           navigate("/properties");
-        }, 2000);
+        
         
       } else {
         alert(savedUser.error);
